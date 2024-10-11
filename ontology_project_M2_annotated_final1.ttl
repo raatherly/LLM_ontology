@@ -1,0 +1,922 @@
+@prefix : <http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#> .
+@prefix mls: <http://www.w3.org/ns/mls#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#> .
+
+<http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2> rdf:type owl:Ontology ;
+                                                                          owl:imports <http://www.w3.org/2008/05/skos> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#conceptualizesClass
+:conceptualizesClass rdf:type owl:AnnotationProperty ;
+                     rdfs:comment "This annotation property is used to indicate that a domain (e.g., a field of study or discipline) conceptualizes or defines a particular class of concepts." .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty ;
+           rdfs:label "rdfs:label" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#builtOn
+:builtOn rdf:type owl:ObjectProperty ;
+         rdfs:domain :Application ;
+         rdfs:range :Language_Model ;
+         rdfs:comment "relation between an application and a language model where the language model powers the application."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#exploits
+:exploits rdf:type owl:ObjectProperty ;
+          rdfs:comment "relation between a and b, where a utilises b."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#fine-tunedFrom
+:fine-tunedFrom rdf:type owl:ObjectProperty ;
+                rdfs:comment "a relation between two models, where model a is built on model b. Model a, in contrast to model b, was trained on additional data to perform a specific task, such as classification." .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#implements
+:implements rdf:type owl:ObjectProperty ;
+            rdfs:comment "relation between a and b, where a utilises b." .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#partOf
+:partOf rdf:type owl:ObjectProperty ;
+        rdfs:comment "relation between a layer type and an architecture, where the architecture includes at least one instance of the layer type."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#performs
+:performs rdf:type owl:ObjectProperty ;
+          rdfs:domain :Language_Model ;
+          rdfs:range :Task .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#studies
+:studies rdf:type owl:ObjectProperty ;
+         rdfs:comment "relation between a concept and an algorithm, where the algorithm is the object of study of the concept."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#usesAlgorithm
+:usesAlgorithm rdf:type owl:ObjectProperty ;
+               rdfs:comment "Relation between a model and an algorithm, where the model implements a specific algorithm, like a machine learning algorithm."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#usesArchitecture
+:usesArchitecture rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Model ;
+                  rdfs:range :Architecture ;
+                  rdfs:comment "relation between a model and an architecture, where the model is made up of a specific architecture like Neural Networks."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#usesLayerType
+:usesLayerType rdf:type owl:ObjectProperty ;
+               rdfs:comment "relation between a architecture and a layer type, where a specific layer type is part of the model's architecture."@en .
+
+
+###  http://www.w3.org/ns/mls#executes
+mls:executes rdf:type owl:ObjectProperty ;
+             rdfs:domain mls:Process ;
+             rdfs:range :TrainingAlgorithm ;
+             rdfs:comment "relation between a process and an algorithm, where the process consists in carrying out the algorithm."@en .
+
+
+###  http://www.w3.org/ns/mls#hasHyperparameter
+mls:hasHyperparameter rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Machine_Learning_Language_Model ;
+                      rdfs:range mls:Hyperparameter ;
+                      rdfs:comment "relation between a model and a hyperparameter, where the hyper parameter is part of the model."@en .
+
+
+###  http://www.w3.org/ns/mls#hasInput
+mls:hasInput rdf:type owl:ObjectProperty ;
+             rdfs:domain :TrainingAlgorithm ;
+             rdfs:range mls:Dataset ;
+             rdfs:comment "a Relation between a training algorithm and a dataset, where the dataset is fed into the training algorithm, so that the algorithm can learn from the data and adjust the model's parameters."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#hasInferenceMechanism
+:hasInferenceMechanism rdf:type owl:DatatypeProperty ;
+                       rdfs:comment "relation giving a specific inference mechanism of a rule-based model."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#noOfParametersInMillions
+:noOfParametersInMillions rdf:type owl:DatatypeProperty ;
+                          rdfs:comment "relation giving the number of parameters of a deep learning model (in million)."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#releaseDate
+:releaseDate rdf:type owl:DatatypeProperty ;
+             rdfs:comment "relation giving the release date of a model."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Algorithm
+:Algorithm rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :exploits ;
+                             owl:someValuesFrom :Mathematical_concept
+                           ] ;
+           rdfs:comment "A step-by-step procedure for solving a problem or performing a task."@en ;
+           rdfs:label "Algorithmus"@de ,
+                      "algorithme"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Application
+:Application rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :builtOn ;
+                               owl:someValuesFrom :Language_Model
+                             ] ;
+             rdfs:comment "Employment of a method onto a dataset."@en ;
+             rdfs:label "Anwendung"@de ,
+                        "application"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Architecture
+:Architecture rdf:type owl:Class ;
+              rdfs:comment "Structure and organisation is the different components and processes that make up a machine learning model. Examples are Neural Networks or Transformers."@en ;
+              rdfs:label "Architektur"@de ,
+                         "architecture"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Autoencoder_Model
+:Autoencoder_Model rdf:type owl:Class ;
+                   rdfs:subClassOf :Deep_Learning_Language_Model ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :exploits ;
+                                     owl:hasValue :Unsupervised_Learning
+                                   ] ;
+                   rdfs:comment "a deep model that takes unlabelled data as input and aims to reconstruct this input data.  To do so, it learns which latent variables are useful reconstruct the data most accurately."@en ;
+                   rdfs:label "Autoencoder"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#BERT_Model
+:BERT_Model rdf:type owl:Class ;
+            rdfs:subClassOf :Large_Language_Model ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :usesArchitecture ;
+                              owl:someValuesFrom :Encoder
+                            ] ;
+            rdfs:comment "A large language model based on the encoder of the transformer architecture, created by Google in 2018, and used for a variety of natural language processing tasks such as language classification."@en ,
+                         "modèle BERT"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#ConceptThatStudyAlgorithm
+:ConceptThatStudyAlgorithm rdf:type owl:Class ;
+                           rdfs:subClassOf <http://www.w3.org/2008/05/skos#Concept> ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :studies ;
+                                             owl:someValuesFrom :Algorithm
+                                           ] ;
+                           rdfs:comment "A concept, e.g., a discipline, that studies algorithms, such as AI or Data Science."@en ;
+                           rdfs:label "concept qui étudie les algorithmes"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Convolutional_Neural_Network_Model
+:Convolutional_Neural_Network_Model rdf:type owl:Class ;
+                                    rdfs:subClassOf :Deep_Learning_Language_Model ,
+                                                    [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :usesLayerType ;
+                                                                             owl:hasValue :Activation_Layer_Type
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :usesLayerType ;
+                                                                             owl:hasValue :Convolution_Layer_Type
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :usesLayerType ;
+                                                                             owl:hasValue :Hidden_Layer_Type
+                                                                           ]
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :usesLayerType ;
+                                                                             owl:hasValue :Linear_Layer_Type
+                                                                           ]
+                                                                         ) ;
+                                                      rdf:type owl:Class
+                                                    ] ;
+                                    rdfs:comment "A deep learning model typically used in image recognition and speech recognition tasks b procession data in grid like topology. It uses convolutional layers and pooling layers to extract important features from the input data."@en ;
+                                    rdfs:label "réseau neuronal convolutif"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Decoder
+:Decoder rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :partOf ;
+                           owl:hasValue :Transformer_Architecture
+                         ] ;
+         rdfs:comment "Part of the transformers architecture that takes the encoded vector representations from the encoder and decodes the information contained in these vectors to generate outputs (usually text)."@en ;
+         rdfs:label "décodeur"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Deep_Learning_Algorithm
+:Deep_Learning_Algorithm rdf:type owl:Class ;
+                         rdfs:subClassOf :Machine_Learning_Algorithm ;
+                         rdfs:comment "A type of machine learning algorithm that uses a neural network architecture with multiple layers to model complex and non-linear patterns in data. Deployed in deep learning models."@en ;
+                         rdfs:label "algorithme d'apprentissage profond"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Deep_Learning_Language_Model
+:Deep_Learning_Language_Model rdf:type owl:Class ;
+                              rdfs:subClassOf :Machine_Learning_Language_Model ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :usesAlgorithm ;
+                                                owl:someValuesFrom :Deep_Learning_Algorithm
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :usesArchitecture ;
+                                                owl:hasValue :Neural_Network_Architecture
+                                              ] ;
+                              rdfs:comment "A machine learning model that is based on the Neural Network architecture.  Handles larger datasets, trains more parameters and requires less human intervention than machine learning models."@en ;
+                              rdfs:label "modèle d'apprentissage profond"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Encoder
+:Encoder rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :partOf ;
+                           owl:hasValue :Transformer_Architecture
+                         ] ;
+         rdfs:comment "Part of the transformer architecture that converts input data (usually text) into contextual vector representations."@en ;
+         rdfs:label "Encodeur"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#GPT_Model
+:GPT_Model rdf:type owl:Class ;
+           rdfs:subClassOf :Large_Language_Model ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :usesArchitecture ;
+                             owl:someValuesFrom :Decoder
+                           ] ;
+           rdfs:comment "A generative large langage model based on the decoder of the transformer architecture and created by OpenAI in 2018. It is used for a variety of natural language processing tasks such as text generation." ;
+           rdfs:label "modèle GPT"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Generative_Adversial_Network_Model
+:Generative_Adversial_Network_Model rdf:type owl:Class ;
+                                    rdfs:subClassOf :Deep_Learning_Language_Model ;
+                                    rdfs:comment "A deep learning model used to generate new data. It generates new data with  the same statistics as a given dataset. Used for data augmentation, notably in image generation."@en ;
+                                    rdfs:label "réseau antagonist génératif"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Language_Model
+:Language_Model rdf:type owl:Class ;
+                rdfs:subClassOf :Model ,
+                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :exploits ;
+                                                         owl:someValuesFrom :Linguistic_Concept
+                                                       ]
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :exploits ;
+                                                         owl:someValuesFrom :Natural_Language
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+                rdfs:comment "A machine learning model that takes as input and/or outputs text or speech."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Large_Language_Model
+:Large_Language_Model rdf:type owl:Class ;
+                      rdfs:subClassOf :Machine_Learning_Language_Model ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :noOfParametersInMillions ;
+                                        owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                             owl:onDatatype xsd:integer ;
+                                                             owl:withRestrictions ( [ xsd:minInclusive 1000
+                                                                                    ]
+                                                                                  )
+                                                           ]
+                                      ] ;
+                      rdfs:comment "A type of language model trained on vast amounts of text data to perform tasks like text generation and understanding."@en ;
+                      rdfs:label "grand modèle de langage"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Layer_Type
+:Layer_Type rdf:type owl:Class ;
+            rdfs:comment "A classification of different kinds of layers in neural networks based on their functions."@en ;
+            rdfs:label "type de couche"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Linguistic_Concept
+:Linguistic_Concept rdf:type owl:Class ;
+                    rdfs:subClassOf <http://www.w3.org/2008/05/skos#Concept> ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :studies ;
+                                      owl:someValuesFrom :Natural_Language
+                                    ] ;
+                    rdfs:comment "A concept, e.g, a discipline, that consists of linguistic notions, ideas and thoughts."@en ;
+                    rdfs:label "concept linguistique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Long_Short-Term_Memory_Model
+:Long_Short-Term_Memory_Model rdf:type owl:Class ;
+                              rdfs:subClassOf :Recurrent_Neural_Network_Model ;
+                              rdfs:comment "A recurrent neural network model that is used for sequential data (like texts), as it is able to keep a memory of long term dependencies by storing knowledge of previous states."@en ;
+                              rdfs:label "réseau de longue mémoire à court terme"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#ML_Pradigm
+:ML_Pradigm rdf:type owl:Class ;
+            rdfs:comment "Different approaches to how a machine learning model is learning from input data"@en ;
+            rdfs:label "paradigme d'apprentissage automatique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Machine_Learning_Algorithm
+:Machine_Learning_Algorithm rdf:type owl:Class ;
+                            rdfs:subClassOf :Algorithm ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :implements ;
+                                              owl:someValuesFrom :ML_Pradigm
+                                            ] ;
+                            owl:disjointWith :Rule-based_Algorithm ;
+                            rdfs:comment "An algorithm that allows computers to learn from data and improve over time without being explicitly programmed. Deployed in machine learning models."@en ;
+                            rdfs:label "Algorithmus des machinellen Lernens"@de ,
+                                       "algorithme d'apprentissage automatique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Machine_Learning_Language_Model
+:Machine_Learning_Language_Model rdf:type owl:Class ;
+                                 rdfs:subClassOf :Language_Model ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :usesAlgorithm ;
+                                                   owl:someValuesFrom :Machine_Learning_Algorithm
+                                                 ] ;
+                                 owl:disjointWith :Rule-based_Language_Model ;
+                                 rdfs:comment "A computer program that learns to recognise patterns in data so that it can make decisions and inferences on unseen data"@en ;
+                                 rdfs:label "Modell für machinelles Lernen"@de ,
+                                            "modèle d'apprentissage automatique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Mathematical_concept
+:Mathematical_concept rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.w3.org/2008/05/skos#Concept> ;
+                      rdfs:comment "A concept, e.g, a discipline, that consists of mathematical notions, ideas and thoughts."@en ;
+                      rdfs:label "concept mathématique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Model
+:Model rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :implements ;
+                         owl:someValuesFrom :Algorithm
+                       ] ;
+       rdfs:comment "A representation of a system that uses algorithms and architectures to make predictions or decisions."@en ;
+       rdfs:label "Modell"@de ,
+                  "modèle"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Multilayer_Perceptron_Model
+:Multilayer_Perceptron_Model rdf:type owl:Class ;
+                             rdfs:subClassOf :Deep_Learning_Language_Model ,
+                                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :usesLayerType ;
+                                                                      owl:hasValue :Activation_Layer_Type
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :usesLayerType ;
+                                                                      owl:hasValue :Hidden_Layer_Type
+                                                                    ]
+                                                                    [ rdf:type owl:Restriction ;
+                                                                      owl:onProperty :usesLayerType ;
+                                                                      owl:hasValue :Linear_Layer_Type
+                                                                    ]
+                                                                  ) ;
+                                               rdf:type owl:Class
+                                             ] ;
+                             rdfs:comment "A deep learning model consisting of at least 3 layers (input, hidden + activation, output layer) and is able to handle nonlinear data due to its activation layer. It is the simplest type of Deep Network Models."@en ;
+                             rdfs:label "Perceptron multicouche"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Natural_Language
+:Natural_Language rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/2008/05/skos#Concept> ;
+                  rdfs:comment "Any language that occurs and develops naturally in a human community, as opposed to artificial languages like programming languages. They are usually the object of study in disciplines like linguistics and natural language processing."@en ;
+                  rdfs:label "langage naturel"@fr ,
+                             "natürliche Sprache"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Recurrent_Neural_Network_Model
+:Recurrent_Neural_Network_Model rdf:type owl:Class ;
+                                rdfs:subClassOf :Deep_Learning_Language_Model ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :usesLayerType ;
+                                                  owl:hasValue :Recurrent_Layer_Type
+                                                ] ;
+                                rdfs:comment "A Deep learning model that is used for sequential data (like texts), where the output at each time step is fed back into the model to account for dependencies."@en ;
+                                rdfs:label "réseau neuronal récurrent"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Rule-based_Algorithm
+:Rule-based_Algorithm rdf:type owl:Class ;
+                      rdfs:subClassOf :Algorithm ;
+                      rdfs:comment "An algorithm that uses a set of predefined rules to make decisions or solve problems. Used in rule based models."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Rule-based_Language_Model
+:Rule-based_Language_Model rdf:type owl:Class ;
+                           rdfs:subClassOf :Language_Model ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty :usesAlgorithm ;
+                                             owl:someValuesFrom :Rule-based_Algorithm
+                                           ] ;
+                           rdfs:comment "a machine learning model that relies on a set of predefined rules for decision-making."@en ;
+                           rdfs:label "modèle d'apprentissage automatique à base de règles"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Speech_Processing_Task
+:Speech_Processing_Task rdf:type owl:Class ;
+                        rdfs:subClassOf :Task ;
+                        rdfs:label "A task consisting in automatically processing speech using a language model"@en ,
+                                   "Sprachverarbeitungsaufgabe"@de ,
+                                   "tâche de traitement de la parole"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Task
+:Task rdf:type owl:Class ;
+      rdfs:comment "Task is a formal description of a process that needs to be completed (e.g. based on inputs and outputs). A Task is any piece of work that needs to be addressed in the data mining process"@en ;
+      rdfs:label "Aufgabe"@de ,
+                 "tâche"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Text_Processing_Task
+:Text_Processing_Task rdf:type owl:Class ;
+                      rdfs:subClassOf :Task ;
+                      rdfs:comment "A task consisting in automatically processing texts using a language model"@en ;
+                      rdfs:label "Textverarbeitungsaufgabe"@de ,
+                                 "tâche de traitement du texte"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#TrainingAlgorithm
+:TrainingAlgorithm rdf:type owl:Class ;
+                   rdfs:subClassOf :TrainingComponent ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :exploits ;
+                                     owl:someValuesFrom :Algorithm
+                                   ] ;
+                   rdfs:comment "Algorithm used in model training process. Allows the model to learn from training data and to adjust its parameters."@en ;
+                   rdfs:label "algorithme d'entrainement"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#TrainingComponent
+:TrainingComponent rdf:type owl:Class ;
+                   rdfs:comment "A component used in the construction and training of a model." .
+
+
+###  http://www.w3.org/2008/05/skos#Concept
+<http://www.w3.org/2008/05/skos#Concept> rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :partOf ;
+                                                           owl:someValuesFrom :Architecture
+                                                         ] .
+
+
+###  http://www.w3.org/ns/mls#Dataset
+mls:Dataset rdf:type owl:Class ;
+            rdfs:subClassOf :TrainingComponent ;
+            rdfs:comment "part of the data fed to the training algorithm. Usually 80% of the entire dataset."@en ;
+            rdfs:label "Jeux d'entrainement"@fr .
+
+
+###  http://www.w3.org/ns/mls#Hyperparameter
+mls:Hyperparameter rdf:type owl:Class ;
+                   rdfs:subClassOf :TrainingComponent ;
+                   rdfs:comment "Hyperparameter is a prior parameter of an implementation, i.e., a parameter which is set before its execution"@en ;
+                   rdfs:label "Hyperparameter"@de ,
+                              "Hyperparamètre"@fr .
+
+
+###  http://www.w3.org/ns/mls#Process
+mls:Process rdf:type owl:Class ;
+            rdfs:subClassOf :TrainingComponent ;
+            rdfs:comment "Process of feeding training dataset to training algorithm"@en ;
+            rdfs:label "processus d'entrainement"@fr .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#AI
+:AI rdf:type owl:NamedIndividual ,
+             :ConceptThatStudyAlgorithm ,
+             <http://www.w3.org/2008/05/skos#Concept> ;
+    <http://www.w3.org/2008/05/skos#narrower> :Science ;
+    rdfs:comment "Artificial Intelligence"@en ;
+    rdfs:label "intelligence artificielle (IA)"@fr ,
+               "künstliche Intelligenz (KI)"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#ALBERT
+:ALBERT rdf:type owl:NamedIndividual ,
+                 :BERT_Model ;
+        :noOfParametersInMillions 235 ;
+        :releaseDate "2019-12-01T00:00:00Z"^^xsd:dateTime ;
+        rdfs:comment "LLM by Lan et al. (2019); a lighter version of BERT"@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#ASR
+:ASR rdf:type owl:NamedIndividual ,
+              :Speech_Processing_Task ;
+     rdfs:comment "Automatic speech recognition"@en ;
+     rdfs:label "automatische Spracherkennung"@de ,
+                "reconnaissance automatique de la parole"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Activation_Layer_Type
+:Activation_Layer_Type rdf:type owl:NamedIndividual ,
+                                :Layer_Type ;
+                       rdfs:comment "A layer that applies an activation function to introduce non-linearity into a model."@en ;
+                       rdfs:label "type de couche d'activation"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Arabic
+:Arabic rdf:type owl:NamedIndividual ,
+                 :Natural_Language ;
+        rdfs:label "arabe"@fr ,
+                   "arabisch"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Batch_size
+:Batch_size rdf:type owl:NamedIndividual ,
+                     mls:Hyperparameter ;
+            rdfs:label "Batchgröße"@de ,
+                       "taille du batch"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Bengali
+:Bengali rdf:type owl:NamedIndividual ,
+                  :Natural_Language .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#CLIPS
+:CLIPS rdf:type owl:NamedIndividual ,
+                :Rule-based_Language_Model ;
+       :usesArchitecture :If-then_rules ;
+       :hasInferenceMechanism "Forward Chaining"^^rdfs:Literal ;
+       :releaseDate "1985-01-01T00:00:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#CamemBERT
+:CamemBERT rdf:type owl:NamedIndividual ,
+                    :BERT_Model ;
+           :noOfParametersInMillions 110 ;
+           :releaseDate "2019-11-26T00:00:00Z"^^xsd:dateTime ;
+           rdfs:comment "LLM by Martin et al. (2019). French Version of the BERT model, built on RoBERTa."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Convolution_Layer_Type
+:Convolution_Layer_Type rdf:type owl:NamedIndividual ,
+                                 :Layer_Type ;
+                        rdfs:comment "A layer that applies a convolution operation, particularly useful in image processing."@en ;
+                        rdfs:label "type de couche convolutif"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Convolutional_Autoencoder
+:Convolutional_Autoencoder rdf:type owl:NamedIndividual ,
+                                    :Autoencoder_Model ;
+                           rdfs:label "autoencodeur convolutif" .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Data_Science
+:Data_Science rdf:type owl:NamedIndividual ,
+                       :ConceptThatStudyAlgorithm ,
+                       <http://www.w3.org/2008/05/skos#Concept> ;
+              <http://www.w3.org/2008/05/skos#narrower> :Science ;
+              rdfs:label "science des données"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Dialog_System
+:Dialog_System rdf:type owl:NamedIndividual ,
+                        :Application ;
+               rdfs:label "Dialogsystem"@de ,
+                          "système de dialogue"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Discipline
+:Discipline rdf:type owl:NamedIndividual ,
+                     <http://www.w3.org/2008/05/skos#Concept> ;
+            rdfs:label "Disziplin"@de ,
+                       "discipline"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Drools
+:Drools rdf:type owl:NamedIndividual ,
+                 :Rule-based_Language_Model ;
+        :usesArchitecture :If-then_rules ;
+        :hasInferenceMechanism "Both Forward and Backward Chaining"^^rdfs:Literal ;
+        :releaseDate "2001-03-01T00:00:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Embedding_Layer_Type
+:Embedding_Layer_Type rdf:type owl:NamedIndividual ,
+                               :Layer_Type ;
+                      rdfs:comment "A layer that converts discrete variables (like words) into continuous vectors for machine learning models."@en ;
+                      rdfs:label "type de couche de plongement"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#English
+:English rdf:type owl:NamedIndividual ,
+                  :Natural_Language ;
+         rdfs:label "Englisch"@de ,
+                    "anglais"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#French
+:French rdf:type owl:NamedIndividual ,
+                 :Natural_Language ;
+        rdfs:label "französisch"@de ,
+                   "français"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#GPT_3.0
+:GPT_3.0 rdf:type owl:NamedIndividual ,
+                  :GPT_Model ;
+         :noOfParametersInMillions 760 ;
+         :releaseDate "2020-06-11T00:00:00Z"^^xsd:dateTime ;
+         rdfs:comment "Generative Pretrained Transformer 3.0"@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#GPT_4.0
+:GPT_4.0 rdf:type owl:NamedIndividual ,
+                  :GPT_Model ;
+         :noOfParametersInMillions 1000000 ;
+         :releaseDate "2023-03-14T00:00:00Z"^^xsd:dateTime ;
+         rdfs:comment "Generative Pretrained Transformer 4.0"@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#German
+:German rdf:type owl:NamedIndividual ,
+                 :Natural_Language ;
+        rdfs:label "allemand"@fr ,
+                   "deutsch"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Hidden_Layer_Type
+:Hidden_Layer_Type rdf:type owl:NamedIndividual ,
+                            :Layer_Type ;
+                   rdfs:comment "Layers between input and output layers where computations are performed in neural networks."@en ;
+                   rdfs:label "couche caché"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#If-then_rules
+:If-then_rules rdf:type owl:NamedIndividual ,
+                        :Architecture .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Learning_Rate
+:Learning_Rate rdf:type owl:NamedIndividual ,
+                        mls:Hyperparameter ;
+               rdfs:label "Lernrate"@de ,
+                          "taux d'apprentissage"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Linear_Algebra
+:Linear_Algebra rdf:type owl:NamedIndividual ,
+                         :Mathematical_concept ;
+                rdfs:label "Lineare Algebra"@de ,
+                           "algèbre linéaire"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Linear_Layer_Type
+:Linear_Layer_Type rdf:type owl:NamedIndividual ,
+                            :Layer_Type ;
+                   rdfs:comment "A fully connected layer where each neuron connects to all neurons in the previous layer and only performs linear operations."@en ;
+                   rdfs:label "type de couche linéaire"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Linguistics
+:Linguistics rdf:type owl:NamedIndividual ,
+                      <http://www.w3.org/2008/05/skos#Concept> ;
+             <http://www.w3.org/2008/05/skos#narrower> :Science ;
+             :conceptualizesClass :Linguistic_Concept ;
+             rdfs:label "Linguistik"@de ,
+                        "linguistique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#MYCIN
+:MYCIN rdf:type owl:NamedIndividual ,
+                :Rule-based_Language_Model ;
+       :usesArchitecture :If-then_rules ;
+       :hasInferenceMechanism "Backward Chaining"^^rdfs:Literal ;
+       :releaseDate "1976-01-01T00:00:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Mathematics
+:Mathematics rdf:type owl:NamedIndividual ,
+                      <http://www.w3.org/2008/05/skos#Concept> ;
+             <http://www.w3.org/2008/05/skos#narrower> :Science ;
+             :conceptualizesClass :Mathematical_concept ;
+             rdfs:label "Mathematik"@de ,
+                        "mathématique"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Morphology
+:Morphology rdf:type owl:NamedIndividual ,
+                     :Linguistic_Concept ;
+            rdfs:comment "Sub-discipline of Linguistics that studies the formation of words."@en ;
+            rdfs:label "Morphologie"@de ,
+                       "morphologie"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#NLP
+:NLP rdf:type owl:NamedIndividual ,
+              <http://www.w3.org/2008/05/skos#Concept> ;
+     <http://www.w3.org/2008/05/skos#narrower> :Science ;
+     :conceptualizesClass :Natural_Language ;
+     rdfs:comment "Natural Language Processing"@en ;
+     rdfs:label "Natürliche Sprachverarbeitung"@de ,
+                "Traitement automatique des langues (TAL)"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Neural_Network_Architecture
+:Neural_Network_Architecture rdf:type owl:NamedIndividual ,
+                                      :Architecture ;
+                             rdfs:comment "an architecture that consists of multiple \"neutrons\" (perceptrons), organised in different layers and able to compute linear and non-linear functions."@en ;
+                             rdfs:label "Neuronales Netzwerk Architektur"@de ,
+                                        "architecture d'un réseau neuronal"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Normalisation_Layer_Type
+:Normalisation_Layer_Type rdf:type owl:NamedIndividual ,
+                                   :Layer_Type ;
+                          rdfs:comment "A layer that normalizes inputs to stabilize and improve model performance."@en ;
+                          rdfs:label "type de couche de normalisation"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Number_Of_Epochs
+:Number_Of_Epochs rdf:type owl:NamedIndividual ,
+                           mls:Hyperparameter ;
+                  rdfs:label "Epochenanzahl"@de ,
+                             "nombre d'époques"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#OpenAI_Codex
+:OpenAI_Codex rdf:type owl:NamedIndividual ,
+                       :Large_Language_Model ;
+              :fine-tunedFrom :GPT_3.0 ;
+              :noOfParametersInMillions 12000 ;
+              :releaseDate "2021-08-10T00:00:00Z"^^xsd:dateTime .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Optimizer_Type
+:Optimizer_Type rdf:type owl:NamedIndividual ,
+                         mls:Hyperparameter ;
+                rdfs:comment "algorithm used to perform back propagation in Neural Networks, e.g., Stochastic Gradient Descent."@en ;
+                rdfs:label "type d'optimisation"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Probability
+:Probability rdf:type owl:NamedIndividual ,
+                      :Mathematical_concept ;
+             rdfs:label "Wahrscheinlichkeit"@de ,
+                        "probabilité"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Reasoning
+:Reasoning rdf:type owl:NamedIndividual ,
+                    :Text_Processing_Task ;
+           rdfs:label "logisches Schlussfolgern"@de ,
+                      "raisonnement"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Recommendation_System
+:Recommendation_System rdf:type owl:NamedIndividual ,
+                                :Application ;
+                       rdfs:label "Empfehlungssystem"@de ,
+                                  "système de recommendation"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Recurrent_Layer_Type
+:Recurrent_Layer_Type rdf:type owl:NamedIndividual ,
+                               :Layer_Type ;
+                      rdfs:comment "A layer type consisting of recurrent units. They maintain hidden states which are passed to the next state forming a kind of memory."@en ;
+                      rdfs:label "type de couche récurrent"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Reinforcement_Learning
+:Reinforcement_Learning rdf:type owl:NamedIndividual ,
+                                 :ML_Pradigm ;
+                        rdfs:label "apprentissage par renforcement"@fr ,
+                                   "bestärkendes Lernen"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Science
+:Science rdf:type owl:NamedIndividual ,
+                  <http://www.w3.org/2008/05/skos#Concept> ;
+         <http://www.w3.org/2008/05/skos#narrower> :Discipline ;
+         rdfs:label "(Natur-)Wissenschaften"@de ,
+                    "sciences"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Search_Engine
+:Search_Engine rdf:type owl:NamedIndividual ,
+                        :Application ;
+               rdfs:label "Suchmaschine"@de ,
+                          "moteur de recherche"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Speech_synthesis
+:Speech_synthesis rdf:type owl:NamedIndividual ,
+                           :Speech_Processing_Task ;
+                  rdfs:label "Sprachsynthese"@de ,
+                             "synthèse de la parole"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Statistics
+:Statistics rdf:type owl:NamedIndividual ,
+                     :Mathematical_concept ;
+            rdfs:label "Statistik"@de ,
+                       "statistiques"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Summarization
+:Summarization rdf:type owl:NamedIndividual ,
+                        :Text_Processing_Task ;
+               rdfs:label "Zusammenfassung"@de ,
+                          "résumé"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Supervised_Learning
+:Supervised_Learning rdf:type owl:NamedIndividual ,
+                              :ML_Pradigm ;
+                     rdfs:label "apprentissage supervisé"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Syntax
+:Syntax rdf:type owl:NamedIndividual ,
+                 :Linguistic_Concept ;
+        rdfs:label "Syntax"@de ,
+                   "syntaxe"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#T5
+:T5 rdf:type owl:NamedIndividual ,
+             :Large_Language_Model ;
+    :usesArchitecture :Transformer_Architecture ;
+    :noOfParametersInMillions 770 ;
+    :releaseDate "2019-10-24T00:00:00Z"^^xsd:dateTime ;
+    rdfs:comment "model developed by Google in 2019; Text-to-Text Transfer Transformer" .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Text_generation
+:Text_generation rdf:type owl:NamedIndividual ,
+                          :Text_Processing_Task ;
+                 rdfs:label "Textgenerierung"@de ,
+                            "génération des textes"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Transfer_Learning
+:Transfer_Learning rdf:type owl:NamedIndividual ,
+                            :ML_Pradigm ;
+                   rdfs:label "apprentissage par transfer"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Transformer_Architecture
+:Transformer_Architecture rdf:type owl:NamedIndividual ,
+                                   :Architecture ;
+                          rdfs:comment "Architecture consisting an encoder and a decoder block, each consisting of feedforward neural networks and multiple attention heads."@en .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Translation
+:Translation rdf:type owl:NamedIndividual ,
+                      :Text_Processing_Task ;
+             rdfs:label "Traduction"@fr ,
+                        "Übersetzung"@de .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Unsupervised_Learning
+:Unsupervised_Learning rdf:type owl:NamedIndividual ,
+                                :ML_Pradigm ;
+                       rdfs:label "apprentissage non-supervisé"@fr .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#Variational_Autoencoder
+:Variational_Autoencoder rdf:type owl:NamedIndividual ,
+                                  :Autoencoder_Model .
+
+
+###  http://www.semanticweb.org/ahana/ontologies/2024/8/ontology_project_M2#XLNet
+:XLNet rdf:type owl:NamedIndividual ,
+                :Large_Language_Model ;
+       :usesArchitecture :Transformer_Architecture ;
+       :noOfParametersInMillions 340 ;
+       :releaseDate "2019-06-19T00:00:00Z"^^xsd:dateTime .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
